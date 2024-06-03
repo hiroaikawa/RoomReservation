@@ -1,0 +1,48 @@
+<dialog class="dialog_edit_mtg">
+  <div class="close_modal">
+    <button class="cancel" type="reset">x</button>
+  </div>
+  <form class="form" method="dialog" name="meeting_form" >
+      <h2 class="dialog_title"></h2>
+      {# Switches display/hide using JavaScript. #}
+      <input type="submit" class="delete" value="Delete Reservation" formaction="{{ url_for('meeting_delete', group_id=room_group.id) }}" formmethod="POST"/>
+      <div class="row">
+        <label for="meeting_name">Title</label>
+        <textarea class="meeting_name" name="meeting_name" rows="1"></textarea>
+      </div>
+      <div class="row">
+        <label for="room_name">Location</label>
+        <textarea class="room_name" name="room_name" rows="1" readonly></textarea>
+      </div>
+      <div class="row">
+        <label for="user_public_id">Creator ID</label>
+        <textarea class="user_public_id" name="user_public_id" rows="1" readonly></textarea>
+      </div>
+      <div class="row">
+        <label for="user_name">Creator</label>
+        <textarea class="user_name" name="user_name" rows="1" readonly></textarea>
+      </div>
+      <div class="row">
+        <label for="start">Start time</label>
+        <input type="text" class="start_time_shown" name="start_time_shown">
+      </div>
+      <div class="row">
+        <label for="end">End time</label>
+        <input type="text" class="end_time_shown" name="end_time_shown">
+        {# Switches display/hide using JavaScript. #}
+        <div class="validation_error" name="end_time_shown"></div> <br />
+      </div>
+      <div class="row">
+        <label for="comment">Description</label>
+        <textarea class="comment" name="comment"></textarea>
+      </div>
+      <input type="hidden" class="user_id" name="user_id">
+      <input type="hidden" class="meeting_id" name="meeting_id">
+      <input type="hidden" class="room_id" name="room_id">
+      <input type="hidden" class="start_time" name="start_time">
+      <input type="hidden" class="end_time" name="end_time">
+      <menu>
+        <input type="submit" class="save" value="" formaction="{{ url_for('meeting_upsert', group_id=room_group.id) }}" formmethod="POST"/>
+      </menu>
+  </form>
+</dialog>

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Select Room Group</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">Room Group</th>
+              <th scope="col">Number of rooms</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for room_group in room_group_list %}
+            <tr>
+              <td>
+                <a class="text-decoration-none" href="{{ url_for('schedule', group_id=room_group.id) }}">
+                  {{ room_group.name }}
+                </a>
+              </td>
+              <td>{{ room_group.room_count }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+    </table>
+
+</div>
+{% endblock %}
+{% block extra_js %}
+{% endblock %}

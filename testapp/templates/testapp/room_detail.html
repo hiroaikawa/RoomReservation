@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <a href="{{ url_for('room_group_detail', id=room_group.id) }}">Return to Room Group Property</a>
+    <h2>Room Property</h2>
+    <form class="form">
+      <label for="name">Room Name</label>
+      <input name="name" value="{{ room.name }}"></input>
+      <input type="submit" class="update_room btn btn-primary" value="Modify" formaction="{{ url_for('room_update', group_id=room_group.id, id=room.id) }}" formmethod="POST"/>
+    </form>
+</div>
+{% include 'components/dialog_success.html' %}
+{% include 'components/dialog_error.html' %}
+{% endblock %}
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/add_event_listener_for_form.js') }}"></script>
+<script src="{{ url_for('static', filename='js/room_detail.js') }}"></script>
+{% endblock %}

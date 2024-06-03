@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block extra_css %}
+<link href="https://cdn.jsdelivr.net/npm/@event-calendar/build@3.0.1/event-calendar.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.3/flatpickr.css">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style_schedule.css') }}"/> 
+{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2>{{room_group.name}}</h2>
+    <div id="ec"></div>
+    <script>
+        const roomGroup = {{room_group|tojson}};
+        const roomList = {{room_list|tojson}};
+        const meetingList = {{meeting_list|tojson}};
+        const initialView = {{view|tojson}};
+        const initialJsonDate = {{date|tojson}};
+        const currentUserName = {{current_user.name|tojson}};
+        const currentUserId = {{current_user.id|tojson}};
+        const currentUserPublicId = {{current_user.public_id|tojson}};
+    </script>
+</div>
+{% include 'testapp/dialog_edit_mtg.html' %}
+{% include 'components/dialog_success.html' %}
+{% include 'components/dialog_error.html' %}
+{% endblock %}
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.3/flatpickr.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@event-calendar/build@3.0.1/event-calendar.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.9/dayjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs-plugin-utc@0.1.2/dist/dayjs-plugin-utc.min.js"></script>
+<script src="{{ url_for('static', filename='js/schedule.js') }}"></script>
+{% endblock %}

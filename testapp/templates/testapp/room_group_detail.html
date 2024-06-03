@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <a href="{{ url_for('room_group_list') }}">Return to Room Group List</a>
+    <h2>Room Group Property</h2>
+    <form class="form">
+      <label for="name">Room Group</label>
+      <input name="name" value="{{ room_group.name }}"></input>
+      <input type="submit" class="update_room btn btn-primary" value="Modify" formaction="{{ url_for('room_group_update', id=room_group.id) }}" formmethod="POST"/>
+    </form>
+    <div class="col-3">
+      <a class="btn btn-outline-primary" href="{{ url_for('add_room', id=room_group.id ) }}" role="button">Create Room</a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">Room Name</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for room in room_list %}
+            <tr>
+              {#<th scope="row">{{ employee.id }}</th>#}
+              <td>
+                <a class="text-decoration-none" href="{{ url_for('room_detail', group_id=room_group.id, id=room.id) }}">
+                  {{ room.name }}
+                </a>
+              </td>
+              <td>
+                <form class="form_delete_room">
+                  <input type="submit" class="delete_room btn btn-primary" value="Delete" formaction="{{ url_for('room_delete', group_id=room_group.id, id=room.id) }}" formmethod="POST"/>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+    </table>
+</div>
+{% include 'components/confirm_modal_delete.html' %}
+{% include 'components/dialog_success.html' %}
+{% include 'components/dialog_error.html' %}
+{% endblock %}
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/add_event_listener_for_form.js') }}"></script>
+<script src="{{ url_for('static', filename='js/add_event_listener_for_delete_row_buttons.js') }}"></script>
+<script src="{{ url_for('static', filename='js/room_group_detail.js') }}"></script>
+{% endblock %}

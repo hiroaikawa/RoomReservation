@@ -1,0 +1,67 @@
+.ec-prev:disabled, .ec-next:disabled {
+  background-color: #ced4da;
+}
+
+dialog {
+  width: 400px;
+  height: 800px;
+  padding: 20px;
+  border: solid 1px;
+}
+
+.close_modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.row {
+  display: flex;
+  margin: 10px;
+}
+
+.row label {
+  width: 90px;
+  white-space: nowrap;
+}
+
+textarea {
+  width: 250px;
+}
+
+textarea:read-only {
+  background-color: #ccc;
+}
+
+input:read-only {
+  background-color: #ccc;
+}
+
+.validation_error {
+  color: rgb(255, 0, 0);
+  display: none;
+}
+
+.dialog_success {
+  width: 350px;
+  height: 300px;
+  padding: 20px;
+  border: solid 1px;
+}
+
+.dialog_error {
+  width: 350px;
+  height: 300px;
+  padding: 20px;
+  border: solid 1px;
+}
+
+.div_button_ok {
+  text-align: center;
+}
+
+.button_ok {
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
+  width: 8em;
+}

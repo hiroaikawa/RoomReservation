@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5 mb-5 d-flex justify-content-center">
+	<div class="card px-1 py-4" style="width: 400px;">
+		<div class="card-body">
+			<a href="{{ url_for('room_group_list') }}">Return to Room Group List</a>
+			<h6 class="card-title mb-3">Create Room Group</h6>
+			<form class="form">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="form-group">
+							<input name="name" class="form-control" type="text" placeholder="Room Group Name"></input>
+						</div>
+					</div>
+				</div>
+				<div class="row mt-3">
+					<div class="col text-center">
+						<input type="submit" class="add_room_group btn btn-primary" value="Create" formaction="{{ url_for('add_room_group') }}" formmethod="POST"/>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% include 'components/dialog_success.html' %}
+{% include 'components/dialog_error.html' %}
+{% endblock %}
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/add_event_listener_for_form.js') }}"></script>
+<script src="{{ url_for('static', filename='js/add_room_group.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "layout_login.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Room Reservation System</h2>
+  <h3>Sign in</h3>  
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class=flashes>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  <form class="form_login" method="POST">
+    {{ form.hidden_tag() }}
+    <div class="row">
+      {{ form.public_id.label }} {{ form.public_id() }}
+    </div>
+    <div class="row">
+      {{ form.password.label }} {{ form.password() }}
+    </div>
+    <div class="row">
+      {{ form.submit() }}
+    </div>
+  </form>
+</div>
+{% endblock %}

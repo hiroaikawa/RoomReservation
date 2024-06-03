@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Room Group List</h2>
+    <div class="col-3">
+      <a class="btn btn-outline-primary" href="{{ url_for('add_room_group') }}" role="button">Create Room Group</a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">Room Group</th>
+              <th scope="col">Number of Rooms</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for room_group in room_group_list %}
+            <tr>
+              {#<th scope="row">{{ employee.id }}</th>#}
+              <td>
+                <a class="text-decoration-none" href="{{ url_for('room_group_detail', id=room_group.id) }}">
+                  {{ room_group.name }}
+                </a>
+              </td>
+              <td>{{ room_group.room_count }}</td>
+              <td>
+                <form class="form_delete_room_group">
+                  <input type="submit" class="delete_room_group btn btn-primary" value="Delete" formaction="{{ url_for('room_group_delete', id=room_group.id) }}" formmethod="POST"/>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+    </table>
+
+</div>
+{% include 'components/confirm_modal_delete.html' %}
+{% include 'components/dialog_success.html' %}
+{% include 'components/dialog_error.html' %}
+{% endblock %}
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/add_event_listener_for_delete_row_buttons.js') }}"></script>
+<script src="{{ url_for('static', filename='js/room_group_list.js') }}"></script>
+{% endblock %}

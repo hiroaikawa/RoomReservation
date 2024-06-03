@@ -1,0 +1,13 @@
+.row {
+  display: flex;
+  margin: 10px;
+}
+
+.row label {
+  width: 90px;
+  white-space: nowrap;
+}
+
+textarea {
+  width: 250px;
+}
